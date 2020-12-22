@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon application Vue .js </title>
+</head>
+<body>
+    <div id='app'>
+        <h1>Ma première app Vue js</h1>
+        <p>Premier paragraphe</p>
+        <h2>Panier</h2>
+        <ul>
+          <li>Pommes: {{ costOfApples }}€</li>
+          <li>Bananes: {{ costOfBananas }}€</li>
+          <li>Noix de coco: {{ costOfCoconuts }}€</li>
+        </ul>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello World', 
+                answerToLife: '42',
+                groceries: ['Pommes', 'Bananes', 'Noix de Coco'],
+                costOfApples: 2,
+                costOfBananas: 4,
+                costOfCoconuts: 6,
+                timeForLunch: false, 
+                info: {
+                    topic: 'VueJS',
+                    length: 5
+                }
+
+            }
+        })
+    </script>
+    <script>console.log(Vue)</script>
+</body>
+</html>
