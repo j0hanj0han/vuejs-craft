@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Vue App</title>
+</head>
+<body>
+    <div id="app" class="app">
+        <h1>{{ restaurantName }}</h1>
+            <h2>My Cart</h2>
+            <ul>
+                <li>Coconut Price: {{ costOfCoconut }} </li>
+                <li>Apple price: {{ costOfApple }} </li>
+            </ul>
+            <p>Total : {{ totalAmount }}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>    
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                restaurantName: "Chez Coco",
+                costOfCoconut: 2,
+                costOfApple: 4
+            },
+            computed: {
+                totalAmount(){
+                    return this.costOfApple + this.costOfCoconut
+                }
+            }
+        })
+    </script>
+    <script>console.log(Vue)</script>
+</body>
+</html>
