@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="./styles.css" />
+		<title >Café avec vue</title>
+	</head>
+	<body>
+		<div id="app" class="app">
+			<h1>{{ restaurantName }}</h1>
+			<p class="description">
+				Bienvenue dans notre café {{ restaurantName }}! Nous sommes réputés pour
+				notre pain et nos merveilleuses pâtisseries. Faites vous plaisir dès le
+				matin ou avec un goûter réconfortant. Mais attention, vous verrez qu'il
+				est difficile de s'arrêter.
+            </p>
+            <h2>Shopping Cart</h2>
+            <ul>
+                <li v-for="item in shoppingCart">
+                    {{ item.label }} : {{ item.cost }}€
+                </li>
+            </ul>
+            <p v-if="user === 'user'">C'est un user</p>
+            <p v-else-if="user === 'admin'">C'est un admin</p>
+            <p v-else> c'est rien</p>
+            <p v-on:click="alert('Bonjour')">Cliquez-ici !</p>
+            <p @click="alert('Hello')">Cliquez-ici !</p>
+
+
+			<h2>Contactez nous</h2>
+			<p>Adresse : {{ restaurantAddress }}</p>
+			<p>Téléphone : {{ restaurantNumber }}</p>
+			<p>Email : {{ restaurantEmail }}</p>
+			<p>Horaires :</p>
+			<ul>
+				<li>L-V: 06:00 à 16:00</li>
+				<li>Samedi: 07:00 à 14:00</li>
+				<li>Dimanche: 07:00 à 12:00</li>
+			</ul>
+
+			<footer class="footer">
+                <p>{{ copyright }}</p>
+			</footer>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script>
+			const app = new Vue({
+				el: "#app",
+				data: {
+					restaurantName: "Café avec vue",
+                    restaurantAddress: "18 avenue du Beurre, Paris, France",
+                    restaurantNumber: "01 88 88 88 88",
+                    restaurantEmail: "hello@cafewithavue.bakery",
+                    shoppingCart: [
+                        { label: 'Pommes', cost: 6 },
+                        { label: 'Bananes', cost: 2 },
+                        { label: 'Noix de coco', cost: 8 }
+                    ],
+                    user: "user"
+				},
+                computed: {
+					copyright() {
+						const currentYear = new Date().getFullYear()
+
+						return `Copyright ${this.restaurantName} ${new Date().getFullYear()}`
+					}
+                },
+                methods: {
+                    alert(message){
+                        console.log(message)
+                        alert("Bonjour")
+                    }
+                }
+			})
+		</script>
+	</body>
+</html>
